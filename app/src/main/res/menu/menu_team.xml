@@ -1,0 +1,8 @@
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    tools:context="team4180.ironriders.investigator.TeamActivity">
+    <item android:id="@+id/to_home_activity" android:title="@string/title_activity_home"
+        app:showAsAction="never" />
+    <item android:id="@+id/to_match_activity" android:title="@string/title_activity_match" app:showAsAction="never"/>
+</menu>

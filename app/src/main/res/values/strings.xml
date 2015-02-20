@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <string name="app_name">4180 Investigator</string>
+    <string name="title_activity_match">Match</string>
+    <string name="title_activity_team">Team</string>
+    <string name="title_activity_home">Home</string>
+    <string name="action_settings">Settings</string>
+    <string name="home_activity_title_image_description">4180 Investigator, Recycle Rush - 2015</string>
+    <string name="home_activity_team_number_edit_text_hint">Team #</string>
+    <string name="home_activity_search_button_text">Search</string>
+    <string name="home_activity_new_match_button_text">New Match</string>
+    <string name="home_activity_match_number_hint">Match #</string>
+    <string name="team_activity_change_picture_button_text">Change Picture</string>
+    <string name="team_activity_view_picture_button_text">View Picture</string>
+    <string name="team_activity_pit_notes_text">Pit Notes</string>
+    <string name="team_activity_functions_text">Functions: </string>
+    <string name="team_activity_checked_text_controls_bin">Picks Up or Contains a Bin</string>
+    <string name="team_activity_checked_text_stacks_bin">Stacks Bin</string>
+    <string name="team_activity_checked_text_controls_totes">Picks Up or Contains Totes</string>
+    <string name="team_activity_checked_text_stacks_totes">Stacks Totes</string>
+    <string name="team_activity_totes_stacked_edit_text_hint"># of Totes stacked</string>
+    <string name="team_activity_checked_text_avoids_noodles">Avoids Noodles</string>
+    <string name="team_activity_checked_text_manipulates_noodles">Manipulates Noodles</string>
+    <string name="team_activity_checked_text_omni_wheels">Omni Wheels</string>
+    <string name="team_activity_checked_text_drive_over_slope">Drive over slope</string>
+    <string name="team_activity_checked_text_Autonomus">Autonomus</string>
+    <string name="team_activity_edit_text_additional_functions_hint">Additional Functions</string>
+    <string name="team_activity_matches_text">Matches: </string>
+    <string name="team_activity_average_points">Average Points per Match: </string>
+    <string name="match_activity_checked_text_teleop">Teleop</string>
+    <string name="match_activity_checked_text_autonomus">Autonomus</string>
+
+    <string-array name="rating_one_to_five">
+        <item>1</item>
+        <item>2</item>
+        <item>3</item>
+        <item>4</item>
+        <item>5</item>
+    </string-array>
+
+    <string name="title_activity_frag">FragActivity</string>
+    <string name="hello_world">Hello world!</string>
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+
+</resources>
