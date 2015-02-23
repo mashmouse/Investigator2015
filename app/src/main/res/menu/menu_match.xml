@@ -2,7 +2,7 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     tools:context="team4180.ironriders.investigator.MatchActivity">
-    <item android:id="@+id/to_home_activity" android:title="@string/title_activity_team"
+    <item android:id="@+id/to_home_activity" android:title="@string/title_activity_home"
          app:showAsAction="never" />
     <item android:id="@+id/to_team_activity" android:title="@string/title_activity_team" app:showAsAction="never"/>
 </menu>
