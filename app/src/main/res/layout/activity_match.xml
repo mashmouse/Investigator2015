@@ -14,14 +14,14 @@
             android:layout_height="wrap_content"
             android:checked="true"
             android:text="@string/match_activity_checked_text_autonomus"
-            android:onClick="onCheckedAutonomousTeleop"/>
+            android:onClick="onCheckedAutonomous"/>
         <CheckBox
             android:id="@+id/matchActivityCheckedTextViewTeleop"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_toRightOf="@id/matchActivityCheckedTextViewAutonomus"
             android:text="@string/match_activity_checked_text_teleop"
-            android:onClick="onCheckedAutonomousTeleop"/>
+            android:onClick="onCheckedTeleop"/>
     </RelativeLayout>
     <LinearLayout
         android:id="@+id/matchActivityTeleopVsAutoFragContainer"
@@ -29,11 +29,10 @@
         android:layout_width="match_parent"
         android:orientation="vertical"
         android:layout_below="@id/matchActivityTeleopVsAutonomusContainer">
-        <fragment
-            android:id="@+id/fragment"
+        <FrameLayout
+            android:id="@+id/fragment_container"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:name="team4180.ironriders.investigator.AutonomousFragment"/>
+            android:layout_height="wrap_content"/>
     </LinearLayout>
 
 </RelativeLayout>
