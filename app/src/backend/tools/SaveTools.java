@@ -7,6 +7,7 @@ import java.util.ArrayList;
 
 import match.AutonomousMatch;
 import match.Match;
+import match.Match.Action;
 import match.TeleopMatch;
 import database.RoboTeam;
 
@@ -15,10 +16,11 @@ public class SaveTools {
 	public static void saveRoboTeam(RoboTeam team) {
 		PrintWriter fileWriter = null;
 		try {
-			fileWriter = new PrintWriter(new File("C:\\Users\\ros_dmlamarca\\Desktop\\" + team.getTeamNumber() + ".rtm"));
+			fileWriter = new PrintWriter(new File("database\\" + team.getTeamNumber() + ".rtm"));
 			ArrayList<Match> matches = team.getMatches();
 			for(Match currentMatch : matches) {
 				fileWriter.print(currentMatch.getMatchNumber() + " ");
+				saveMatch(currentMatch, team);
 			}
 			fileWriter.println();
 			fileWriter.println(team.getPitNotes().FUNCTION_NOODLE);
@@ -36,7 +38,7 @@ public class SaveTools {
 		}
 	}
 	
-	public static void saveMatch(RoboTeam team, Match match) {
+	public static void saveMatch(Match match, RoboTeam team) {
 		PrintWriter fileWriter = null;
 		String fileType = ".err";
 		if(match instanceof AutonomousMatch) {
@@ -46,7 +48,7 @@ public class SaveTools {
 		}
 		
 		try {
-			fileWriter = new PrintWriter(new File("C:\\Users\\ros_dmlamarca\\Desktop\\" + match.getMatchNumber() +  "." + team.getTeamNumber() + fileType));
+			fileWriter = new PrintWriter(new File("database\\matches\\" + match.getMatchNumber() +  "." + team.getTeamNumber() + fileType));
 			ArrayList<Action> actions = match.getActions();
 			for(Action currentAction : actions) {
 				fileWriter.println(currentAction.getData());
