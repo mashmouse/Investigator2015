@@ -30,6 +30,10 @@ public abstract class Match {
 		return title;
 	}
 	
+	public ArrayList<Action> getActions() {
+		return ACTIONS;
+	}
+	
 	public void printActions() {
 		System.out.println("Actions:");
 		for(Action action: ACTIONS) {
@@ -37,7 +41,7 @@ public abstract class Match {
 		}
 	}
 	
-	protected abstract class Action {
+	public abstract class Action {
 		protected int REWARDED_POINTS = 0;
 		String DESCRIPTION = "";
 		

@@ -46,8 +46,11 @@ public class SaveTools {
 		}
 		
 		try {
-			fileWriter = new PrintWriter(new File("C:\\Users\\ros_dmlamarca\\Desktop\\" + team.getTeamNumber() + "." + match.getMatchNumber() + fileType));
-			fileWriter.println();
+			fileWriter = new PrintWriter(new File("C:\\Users\\ros_dmlamarca\\Desktop\\" + match.getMatchNumber() +  "." + team.getTeamNumber() + fileType));
+			ArrayList<Action> actions = match.getActions();
+			for(Action currentAction : actions) {
+				fileWriter.println(currentAction.getData());
+			}
 			fileWriter.close();
 		} catch(IOException io) {
 			System.err.println("IOException bitch... sorry");
