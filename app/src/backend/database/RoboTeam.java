@@ -42,15 +42,20 @@ public class RoboTeam {
 		return output;
 	}
 	
-	private class PitNotes {
+	public class PitNotes {
 		public boolean FUNCTION_NOODLE;
 		public boolean FUNCTION_BIN;
 		public boolean FUNCTION_TOTE;
 		public boolean FUNCTION_SLOPE;
 		public boolean FUNCTION_FLIP_TOTE;
+		public boolean FUNCTION_OMNIWEEL;
 		public boolean FUNCTION_BALANCE_ROBOT;
 		public boolean FUNCTION_BALANCE_STACK;
 		private String FUNCTION_MISCELLANEOUS;
+		
+		public PitNotes() {
+			FUNCTION_MISCELLANEOUS = "";
+		}
 		
 		public String getMiscFunctions() {
 			return FUNCTION_MISCELLANEOUS;
@@ -66,7 +71,8 @@ public class RoboTeam {
 			output += "    -Bin------[" + FUNCTION_BIN + "]\n";
 			output += "    -Tote-----[" + FUNCTION_TOTE + "]\n";
 			output += "    -Slope----[" + FUNCTION_SLOPE + "]\n";
-			output += "    -Flip-----[" + FUNCTION_FLIP_TOTE + "]";
+			output += "    -Flip-----[" + FUNCTION_FLIP_TOTE + "]\n";
+			output += "    -Omniweel-[" + FUNCTION_FLIP_TOTE + "]\n";
 			output += "    -rBalance-[" + FUNCTION_BALANCE_ROBOT + "]\n";
 			output += "    -sBalance-[" + FUNCTION_BALANCE_STACK + "]";
 			return output;

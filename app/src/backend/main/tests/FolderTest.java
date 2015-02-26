@@ -13,6 +13,7 @@ public class FolderTest {
 		Match matchA = new AutonomousMatch("43");
 		team.addMatch(matchT);
 		team.addMatch(matchA);
+		team.getPitNotes().setMiscFunctions("My least favorite person on the planet is Alex WhatHisButtWhoseAssIsAGhoat");
 		SaveTools.saveRoboTeam(team);
 	}
 }

@@ -25,6 +25,6 @@ public class TestTeamDataBase {
 		
 //		System.out.println(database);
 		
-//		TeamDataBase.printTeamArray(database.searchMatchNumber("2"));
+		TeamDataBase.printTeamArray(database.searchMatchNumber("2"));
 	}
 }
