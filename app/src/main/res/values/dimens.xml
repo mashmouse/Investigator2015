@@ -4,4 +4,6 @@
     <dimen name="activity_vertical_margin">16dp</dimen>
     <dimen name="home_activity_image_top_margin">45dp</dimen>
     <dimen name="home_activity_image_bottom_margin">15dp</dimen>
+    <dimen name="box_horizontal_padding">5dp</dimen>
+    <dimen name="action_group_horizontal_margin">10dp</dimen>
 </resources>

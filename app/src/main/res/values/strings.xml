@@ -42,5 +42,17 @@
     <string name="title_activity_frag">FragActivity</string>
     <string name="hello_world">Hello world!</string>
     <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="button_one_text">RoboSet</string>
+    <string name="button_two_text">BUTTON 2</string>
+    <string name="button_three_text">ToteSet</string>
+    <string name="button_four_text">BUTTON 4</string>
+    <string name="button_five_text">ContainerSet</string>
+    <string name="button_six_text">BUTTON 2</string>
+    <string name="button_seven_text">StackedToteSet</string>
+    <string name="button_eight_text">BUTTON 4</string>
+    <string name="button_sucess">YAY</string>
+    <string name="button_fail">NAY</string>
+
+
 
 </resources>

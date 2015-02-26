@@ -2,7 +2,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    tools:context="team4180.ironriders.investigator.TeleopFragment" >
+    tools:context="team4180.ironriders.investigator2015.TeleopFragment" >
 
     <TextView
         android:layout_width="wrap_content"
