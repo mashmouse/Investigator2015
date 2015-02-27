@@ -25,9 +25,10 @@ public class FolderTest {
 //		team.getPitNotes().setMiscFunctions("My least favorite person on the planet is Alex WhatHisButtWhoseAssIsAGhoat");
 //		SaveTools.saveRoboTeam(team);
 //		SaveTools.saveMatch(matchT, team);
-//		RoboTeam team = SaveTools.loadRoboTeam("4180");
-//		System.out.println(team);
-		Match matchT = SaveTools.loadMatch("1", "4180");
-		matchT.printActions();
+		RoboTeam team = SaveTools.loadRoboTeam("4180");
+		System.out.println(team + "\n");
+		team.printMatches();
+//		Match matchT = SaveTools.loadMatch("1", "4180");
+//		matchT.printActions();
 	}
 }

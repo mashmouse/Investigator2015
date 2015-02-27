@@ -49,7 +49,11 @@ public class SaveTools {
 				try {
 					newTeam = new RoboTeam(teamNumber);
 					Scanner fileScanner = new Scanner(currentFile);
-					fileScanner.nextLine();
+					String matchLine = fileScanner.nextLine();
+					Scanner matchNumberScanner = new Scanner(matchLine);
+					while(matchNumberScanner.hasNextInt()) {
+						newTeam.addMatch(loadMatch(matchNumberScanner.nextInt() + "",teamNumber));
+					}
 					newTeam.getPitNotes().FUNCTION_NOODLE = fileScanner.nextBoolean();
 					newTeam.getPitNotes().FUNCTION_BIN = fileScanner.nextBoolean();
 					newTeam.getPitNotes().FUNCTION_TOTE = fileScanner.nextBoolean();

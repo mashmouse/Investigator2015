@@ -30,6 +30,13 @@ public class RoboTeam {
 		return MATCHES;
 	}
 	
+	public void printMatches() {
+		for(Match currentMatch: MATCHES) {
+			System.out.println(currentMatch.getMatchNumber() + ":");
+			currentMatch.printActions();
+		}
+	}
+	
 	public PitNotes getPitNotes() {
 		return PIT_NOTES;
 	}

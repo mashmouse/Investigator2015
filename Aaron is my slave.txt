@@ -1,0 +1,27 @@
+Make RoboTeam(String teamNumber):
+	addMatch()
+	change PitNotes (true/false)
+		Noodle
+		Bin
+		Tote
+		Slope
+		Flip
+		Omniweel
+		Robot Balance
+		Stack Balance
+		Misc (String)
+
+Make Match(String number)
+	addAction()
+		Autonomous:
+			RobotSet
+			ToteSet
+			ContainerSet
+			StackedToteSet
+		Teleop:
+			StackedTote
+			StackedBin(int totes *max 6*)
+			NoodleInBin
+			PushNoodle
+			CooperationSet
+	
