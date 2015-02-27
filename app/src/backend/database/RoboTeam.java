@@ -1,5 +1,8 @@
 package database;
+import java.io.File;
+import java.io.FileNotFoundException;
 import java.util.ArrayList;
+import java.util.Scanner;
 
 import match.Match;
 
@@ -74,7 +77,8 @@ public class RoboTeam {
 			output += "    -Flip-----[" + FUNCTION_FLIP_TOTE + "]\n";
 			output += "    -Omniweel-[" + FUNCTION_FLIP_TOTE + "]\n";
 			output += "    -rBalance-[" + FUNCTION_BALANCE_ROBOT + "]\n";
-			output += "    -sBalance-[" + FUNCTION_BALANCE_STACK + "]";
+			output += "    -sBalance-[" + FUNCTION_BALANCE_STACK + "]\n";
+			output += "    -Misc-----[" + FUNCTION_MISCELLANEOUS + "]";
 			return output;
 		}
 	}
