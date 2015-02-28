@@ -7,10 +7,8 @@ import java.io.PrintWriter;
 import java.util.ArrayList;
 import java.util.Scanner;
 
-import match.AutonomousMatch;
 import match.Match;
-import match.Match.Action;
-import match.TeleopMatch;
+import match.Action;
 import database.RoboTeam;
 
 public class SaveTools {
@@ -75,15 +73,8 @@ public class SaveTools {
 	
 	public static void saveMatch(Match match, RoboTeam team) {
 		PrintWriter fileWriter = null;
-		String fileType = ".err";
-		if(match instanceof AutonomousMatch) {
-			fileType = ".aut";
-		} else if(match instanceof TeleopMatch) {
-			fileType = ".tel";
-		}
-		
 		try {
-			fileWriter = new PrintWriter(new File("database\\matches\\" + match.getMatchNumber() +  "." + team.getTeamNumber() + fileType));
+			fileWriter = new PrintWriter(new File("database\\matches\\" + match.getMatchNumber() +  "." + team.getTeamNumber() + ".mch"));
 			ArrayList<Action> actions = match.getActions();
 			for(Action currentAction : actions) {
 				fileWriter.println(currentAction.getData());
@@ -100,8 +91,8 @@ public class SaveTools {
 		String fileNamePrefix = matchNumber + "." + teamNumber;
 		try {
 			for(File currentFile:teams) {
-				if(currentFile.getName().equals(fileNamePrefix + ".tel")) {
-						TeleopMatch match = new TeleopMatch(matchNumber);
+				if(currentFile.getName().equals(fileNamePrefix + ".mch")) {
+						Match match = new Match(matchNumber);
 						Scanner fileScanner = new Scanner(currentFile);
 						while(fileScanner.hasNextLine()) {
 							String line = fileScanner.nextLine();
@@ -116,26 +107,18 @@ public class SaveTools {
 								match.newPushNoodle();
 							} else if(line.startsWith("COOPERATIONSET")) {
 								match.newCooperationSet();
+							} else if(line.startsWith("ROBOTSET")) {
+								match.newRobotSet();
+							} else if(line.startsWith("TOTESET")) {
+								match.newToteSet();
+							} else if(line.startsWith("CONTAINERSET")) {
+								match.newContainerSet();
+							} else if(line.startsWith("STACKEDTOTESET")) {
+								match.newStackedToteSet();
 							}
 						}
 						return match;
-				} else if(currentFile.getName().equals(fileNamePrefix + ".aut")) {
-					AutonomousMatch match = new AutonomousMatch(matchNumber);
-					Scanner fileScanner = new Scanner(currentFile);
-					while(fileScanner.hasNextLine()) {
-						String line = fileScanner.nextLine();
-						if(line.startsWith("ROBOTSET")) {
-							match.newRobotSet();
-						} else if(line.startsWith("TOTESET")) {
-							match.newToteSet();
-						} else if(line.startsWith("CONTAINERSET")) {
-							match.newContainerSet();
-						} else if(line.startsWith("STACKEDTOTESET")) {
-							match.newStackedToteSet();
-						}
-					}
-					return match;
-				}
+				} 
 			}
 		} catch (FileNotFoundException e) {
 			System.err.println("Sorry bra, FileNotFoundException");
