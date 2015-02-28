@@ -1,4 +1,4 @@
-package main.tests;
+package tests;
 
 import match.Match;
 import database.RoboTeam;
@@ -26,7 +26,7 @@ public class FolderTest {
 //		RoboTeam team = SaveTools.loadRoboTeam("4180");
 //		System.out.println(team + "\n");
 //		team.printMatches();
-		Match matchT = SaveTools.loadMatch("1", "4180");
-		matchT.printActions();
+		Match match = SaveTools.loadMatch("1", "4180");
+		match.printActions();
 	}
 }

@@ -1,6 +1,4 @@
-package main.tests;
-
-import match.TeleopMatch;
+package tests;
 
 public class TestMatch {
 	public static void main(String[] args) {

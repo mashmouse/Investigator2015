@@ -1,6 +1,5 @@
-package main.tests;
+package tests;
 
-import match.TeleopMatch;
 import database.RoboTeam;
 import database.TeamDataBase;
 
@@ -15,11 +14,11 @@ public class TestTeamDataBase {
 		for(int count = 1; count <= 30; count++) {
 			database.add(new RoboTeam(count + ""));
 		}
-//		
-		database.getTeam("25").addMatch(new TeleopMatch("1"));
-		database.getTeam("26").addMatch(new TeleopMatch("2"));
-		database.getTeam("27").addMatch(new TeleopMatch("20"));
-		database.getTeam("28").addMatch(new TeleopMatch("32"));
+	
+//		database.getTeam("25").addMatch(new TeleopMatch("1"));
+//		database.getTeam("26").addMatch(new TeleopMatch("2"));
+//		database.getTeam("27").addMatch(new TeleopMatch("20"));
+//		database.getTeam("28").addMatch(new TeleopMatch("32"));
 		
 		TeamDataBase.printTeamArray(database.searchTeamNumber("72"));
 		

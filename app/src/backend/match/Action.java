@@ -1,28 +1,35 @@
 package match;
 
 public abstract class Action {
-	protected int REWARDED_POINTS = 0;
-	String DESCRIPTION = "";
+	protected int rewardedPoints = 0;
+	protected ActionType actionType;
+	String description = "";
 
-	public Action(int rewardedPoints) {
-		REWARDED_POINTS = rewardedPoints;
+	public Action(int rewardedPoints, ActionType actionType) {
+		this.rewardedPoints = rewardedPoints;
+		this.actionType = actionType;
 	}
 
 	public int getPoints() {
-		return REWARDED_POINTS;
+		return rewardedPoints;
 	}
 
 	public String getDescription() {
-		return DESCRIPTION;
+		return description;
 	}
 
 	protected void setDescription(String description) {
-		DESCRIPTION = description;
+		this.description = description;
 	}
 
 	public String getData() {
 		String title = this.getClass().toString();
 		title = title.substring(title.indexOf("$") + 1,title.length()).toUpperCase();
-		return title + " " + REWARDED_POINTS;
+		return title + " " + rewardedPoints;
+	}
+	
+	protected enum ActionType {
+		TELEOP,
+		AUTONOMOUS
 	}
 }

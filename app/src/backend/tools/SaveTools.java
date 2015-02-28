@@ -75,8 +75,12 @@ public class SaveTools {
 		PrintWriter fileWriter = null;
 		try {
 			fileWriter = new PrintWriter(new File("database\\matches\\" + match.getMatchNumber() +  "." + team.getTeamNumber() + ".mch"));
-			ArrayList<Action> actions = match.getActions();
-			for(Action currentAction : actions) {
+			ArrayList<Action> autonomousActions = match.getAutonomousActions();
+			for(Action currentAction : autonomousActions) {
+				fileWriter.println(currentAction.getData());
+			}
+			ArrayList<Action> teleopActions = match.getTeleopActions();
+			for(Action currentAction : teleopActions) {
 				fileWriter.println(currentAction.getData());
 			}
 			fileWriter.close();
