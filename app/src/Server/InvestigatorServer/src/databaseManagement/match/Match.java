@@ -1,4 +1,4 @@
-package match;
+package databaseManagement.match;
 
 import java.util.ArrayList;
 

@@ -17,6 +17,7 @@ import java.util.ArrayList;
  * @author Aaron Jacobson
  */
 public class Server {
+    public static final String CREATE_TEAM = "MAKE_A_TEAM_WITH_THIS_NUMBER_PLOX";
     
     private Socket socket;
     private ServerSocket serverSocket;

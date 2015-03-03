@@ -1,4 +1,4 @@
-package match;
+package databaseManagement.match;
 
 public class AutonomousMatch extends Match {
 	public AutonomousMatch(String matchNumber) {

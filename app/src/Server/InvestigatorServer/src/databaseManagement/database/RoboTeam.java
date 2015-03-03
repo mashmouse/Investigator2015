@@ -1,7 +1,7 @@
-package database;
+package databaseManagement.database;
+import databaseManagement.match.Match;
 import java.util.ArrayList;
 
-import match.Match;
 
 public class RoboTeam {
 	private ArrayList<Match> MATCHES;

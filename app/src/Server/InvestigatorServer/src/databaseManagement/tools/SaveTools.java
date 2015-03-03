@@ -1,14 +1,14 @@
-package tools;
+package databaseManagement.tools;
 
+import databaseManagement.database.RoboTeam;
+import databaseManagement.match.AutonomousMatch;
+import databaseManagement.match.Match;
+import databaseManagement.match.TeleopMatch;
 import java.io.File;
 import java.io.IOException;
 import java.io.PrintWriter;
 import java.util.ArrayList;
 
-import match.AutonomousMatch;
-import match.Match;
-import match.TeleopMatch;
-import database.RoboTeam;
 
 public class SaveTools {
 

@@ -1,6 +1,5 @@
-package match;
+package databaseManagement.match;
 
-import match.Match.Action;
 
 public class TeleopMatch extends Match {
 	public TeleopMatch(String matchNumber) {

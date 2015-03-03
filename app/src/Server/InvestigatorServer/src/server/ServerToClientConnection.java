@@ -5,10 +5,13 @@
  */
 package server;
 
+import databaseManagement.database.RoboTeam;
 import java.io.DataInputStream;
 import java.io.DataOutputStream;
 import java.io.IOException;
 import java.util.ArrayList;
+import java.util.Scanner;
+import main.ServerRunner;
 
 /**
  *
@@ -32,8 +35,7 @@ public class ServerToClientConnection implements Runnable{
         shouldRun = true;
         while(shouldRun){
             try {
-                String message = dataIn.readUTF();
-                interpretMessage(message);
+                interpretMessage(dataIn.readUTF());
             } catch (IOException ex) {
                 System.out.println("ServerToClientConnection: Lost connection with the client.");
                 shouldRun = false;
@@ -42,7 +44,12 @@ public class ServerToClientConnection implements Runnable{
         }
     }
     
-    public void interpretMessage(String messsage){
-        
+    public void interpretMessage(String message){
+        Scanner messageScanner = new Scanner(message);
+        String command = messageScanner.next();
+        if(command.equals(Server.CREATE_TEAM)){
+            System.out.println("ServerToClientConnection: Creating a team.");
+            ServerRunner.THE_DATABASE.add(new RoboTeam(messageScanner.next()));
+        }
     }
 }
