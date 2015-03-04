@@ -2,6 +2,7 @@ package database.match;
 
 public abstract class Action {
 	protected int rewardedPoints = 0;
+        protected String team;
 	protected ActionType actionType;
 	String description = "";
 

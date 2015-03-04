@@ -1,10 +1,12 @@
 package database.match;
 
+import database.RoboTeam;
 import java.util.ArrayList;
 
 public class Match {
 	private ArrayList<Action> autonomousActions;
 	private ArrayList<Action> teleopActions;
+        private ArrayList<RoboTeam> teams;
 	private String matchNumber;
 	
 	public Match(String matchNumber) {
