@@ -1,4 +1,4 @@
-package match;
+package database.match;
 
 public abstract class Action {
 	protected int rewardedPoints = 0;

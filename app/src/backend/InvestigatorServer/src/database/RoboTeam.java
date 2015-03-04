@@ -4,7 +4,7 @@ import java.io.FileNotFoundException;
 import java.util.ArrayList;
 import java.util.Scanner;
 
-import match.Match;
+import database.match.Match;
 
 public class RoboTeam {
 	private ArrayList<Match> MATCHES;

@@ -1,4 +1,4 @@
-package tools;
+package database.tools;
 
 import java.io.File;
 import java.io.FileNotFoundException;
@@ -7,8 +7,8 @@ import java.io.PrintWriter;
 import java.util.ArrayList;
 import java.util.Scanner;
 
-import match.Match;
-import match.Action;
+import database.match.Match;
+import database.match.Action;
 import database.RoboTeam;
 
 public class SaveTools {

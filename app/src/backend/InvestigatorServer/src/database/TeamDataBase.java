@@ -1,7 +1,7 @@
 package database;
 import java.util.ArrayList;
 
-import match.Match;
+import database.match.Match;
 
 public class TeamDataBase {
 	private ArrayList<RoboTeam> TEAMS; 
