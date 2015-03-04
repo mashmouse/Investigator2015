@@ -1,12 +1,12 @@
-package databaseManagement.database;
-import databaseManagement.match.Match;
+package database;
 import java.util.ArrayList;
 
+import match.Match;
 
-public class TeamDatabase {
+public class TeamDataBase {
 	private ArrayList<RoboTeam> TEAMS; 
 	
-	public TeamDatabase() {
+	public TeamDataBase() {
 		TEAMS = new ArrayList<RoboTeam>();
 	}
 	
