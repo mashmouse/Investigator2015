@@ -5,7 +5,7 @@
  */
 package main;
 
-import databaseManagement.database.TeamDatabase;
+import database.TeamDataBase;
 import server.Server;
 
 /**
@@ -13,10 +13,10 @@ import server.Server;
  * @author Aaron Jacobson
  */
 public class ServerRunner {
-    public static TeamDatabase THE_DATABASE;
+    public static TeamDataBase THE_DATABASE;
     public static Server THE_SERVER;
     public static void main(String[] args){
-        THE_DATABASE = new TeamDatabase();
+        THE_DATABASE = new TeamDataBase();
         THE_SERVER = new Server();
     }
 }
