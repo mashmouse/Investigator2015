@@ -6,7 +6,7 @@ import java.util.ArrayList;
 public class Match {
 	private ArrayList<Action> autonomousActions;
 	private ArrayList<Action> teleopActions;
-        private ArrayList<RoboTeam> teams;
+        private ArrayList<String> teams;
 	private String matchNumber;
 	
 	public Match(String matchNumber) {
@@ -14,6 +14,16 @@ public class Match {
 		this.teleopActions = new ArrayList<Action>();
 		this.matchNumber = matchNumber;
 	}
+        
+        public Match(String matchNumber,String team1,String team2,String team3,String team4,String team5,String team6){
+            this(matchNumber);
+            teams.add(team1);
+            teams.add(team2);
+            teams.add(team3);
+            teams.add(team4);
+            teams.add(team5);
+            teams.add(team6);
+        }
 	
 	public int getTotalPoints() {
 		int points = 0;
@@ -47,6 +57,10 @@ public class Match {
 	public ArrayList<Action> getTeleopActions() {
 		return teleopActions;
 	}
+        
+        public ArrayList<String> getTeams(){
+            return teams;
+        }
 	
 	public void printActions() {
 		System.out.println("AutonomousActions:");

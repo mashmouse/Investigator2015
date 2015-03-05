@@ -1,4 +1,4 @@
-package tests;
+package database.tests;
 
 import database.RoboTeam;
 import database.TeamDataBase;
@@ -24,6 +24,6 @@ public class TestTeamDataBase {
 		
 //		System.out.println(database);
 		
-		TeamDataBase.printTeamArray(database.searchMatchNumber("2"));
+//		TeamDataBase.printTeamArray(database.searchMatchNumber("2"));
 	}
 }

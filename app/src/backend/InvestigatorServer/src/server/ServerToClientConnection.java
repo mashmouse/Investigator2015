@@ -5,6 +5,8 @@
  */
 package server;
 
+import database.RoboTeam;
+import database.match.Match;
 import java.io.DataInputStream;
 import java.io.DataOutputStream;
 import java.io.IOException;
@@ -12,6 +14,7 @@ import java.net.Socket;
 import java.util.Scanner;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import main.ServerRunner;
 
 /**
  *
@@ -62,11 +65,12 @@ public class ServerToClientConnection implements Runnable{
     public void interpretMessage(Scanner messageScanner){
         String command = messageScanner.next();
         if(command.equals(Server.COM_MAKE_TEAM)){
-        
+            String teamNumber = messageScanner.next();
+            ServerRunner.THE_DATABASE.add(new RoboTeam(teamNumber));
         }else if(command.equals(Server.COM_MAKE_MATCH)){
-            
+            ServerRunner.THE_DATABASE.addMatch(new Match(messageScanner.next(),messageScanner.next(),messageScanner.next(),messageScanner.next(),messageScanner.next(),messageScanner.next(),messageScanner.next()));
         }else if(command.equals(Server.COM_ADD_ACTION)){
-            
+//            ServerRunner.THE_DATABASE.
         }else if(command.equals(Server.COM_ADD_MATCH)){
             
         }else if(command.equals(Server.PIT_BIN)){
