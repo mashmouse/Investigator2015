@@ -26,7 +26,7 @@ public class FolderTest {
 //		RoboTeam team = SaveTools.loadRoboTeam("4180");
 //		System.out.println(team + "\n");
 //		team.printMatches();
-		Match match = SaveTools.loadMatch("1", "4180");
-		match.printActions();
+//		Match match = SaveTools.loadMatch("1", "4180");
+//		match.printActions();
 	}
 }

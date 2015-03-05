@@ -12,8 +12,6 @@ import java.io.DataOutputStream;
 import java.io.IOException;
 import java.net.Socket;
 import java.util.Scanner;
-import java.util.logging.Level;
-import java.util.logging.Logger;
 import main.ServerRunner;
 
 /**
@@ -66,9 +64,16 @@ public class ServerToClientConnection implements Runnable{
         String command = messageScanner.next();
         if(command.equals(Server.COM_MAKE_TEAM)){
             String teamNumber = messageScanner.next();
-            ServerRunner.THE_DATABASE.add(new RoboTeam(teamNumber));
+            ServerRunner.THE_DATABASE.addTeam(new RoboTeam(teamNumber));
         }else if(command.equals(Server.COM_MAKE_MATCH)){
-            ServerRunner.THE_DATABASE.addMatch(new Match(messageScanner.next(),messageScanner.next(),messageScanner.next(),messageScanner.next(),messageScanner.next(),messageScanner.next(),messageScanner.next()));
+            Match m = new Match(messageScanner.next());
+            m.addTeam(messageScanner.next());
+            m.addTeam(messageScanner.next());
+            m.addTeam(messageScanner.next());
+            m.addTeam(messageScanner.next());
+            m.addTeam(messageScanner.next());
+            m.addTeam(messageScanner.next());
+            ServerRunner.THE_DATABASE.addMatch(m);
         }else if(command.equals(Server.COM_ADD_ACTION)){
 //            ServerRunner.THE_DATABASE.
         }else if(command.equals(Server.COM_ADD_MATCH)){

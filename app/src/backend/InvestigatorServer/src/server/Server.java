@@ -5,9 +5,14 @@
  */
 package server;
 
+import java.io.DataInputStream;
+import java.io.DataOutputStream;
+import java.io.IOException;
 import java.net.ServerSocket;
 import java.net.Socket;
 import java.util.ArrayList;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 /**
  *
@@ -191,6 +196,7 @@ public class Server {
     
     private ServerSocket serverSocket;
     private Socket socket;
+    private boolean shouldWait;
     private ArrayList<ServerToClientConnection> clientConnections;
     
     /**
@@ -204,21 +210,42 @@ public class Server {
      *
      */
     public void startServer(){
-        
+        try {
+            serverSocket = new ServerSocket(PORT_NUMBER);
+        } catch (IOException ex) {
+            System.out.println("Server: Unable to initialize the server socket.");
+        }
     }
     
     /**
      *
      */
     public void waitForClientConnections(){
-        
+        shouldWait = true;
+        if(serverSocket!= null){
+            while(shouldWait){
+                try {
+                    socket = serverSocket.accept();
+                    DataInputStream in = new DataInputStream(socket.getInputStream());
+                    DataOutputStream out = new DataOutputStream(socket.getOutputStream());
+                    clientConnections.add(new ServerToClientConnection(this,socket,in,out));
+                    Thread clientConnectionThread = new Thread(clientConnections.get(clientConnections.size()-1));
+                    clientConnectionThread.start();
+                } catch (IOException ex) {
+                    System.out.println("Server: Unable to accpet the socket.");
+                }
+            }
+        }
     }
     
     /**
      *
      */
     public void shutDownConnections(){
-        
+        for(ServerToClientConnection s : clientConnections){
+            s.setShouldRun(false);
+            shouldWait = false;
+        }
     }
     
     /**

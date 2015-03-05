@@ -3,6 +3,7 @@ package database;
 import java.util.ArrayList;
 
 import database.match.Match;
+import main.ServerRunner;
 
 public class TeamDataBase {
 
@@ -13,8 +14,15 @@ public class TeamDataBase {
         TEAMS = new ArrayList<RoboTeam>();
     }
 
-    public void add(RoboTeam team) {
+    public void addTeam(RoboTeam team) {
         TEAMS.add(team);
+    }
+
+    public void addMatch(Match match){
+        MATCHES.add(match);
+        while(match.getTeams().hasMoreElements()){
+            ServerRunner.THE_DATABASE.getTeam(match.getTeams().nextElement()).addMatch(match);
+        }
     }
 
     public ArrayList<RoboTeam> searchTeamNumber(String search) {
@@ -48,15 +56,6 @@ public class TeamDataBase {
 
     public ArrayList<Match> getMatches() {
         return MATCHES;
-    }
-
-    public void addMatch(Match match){
-        MATCHES.add(match);
-        for(String s : match.getTeams()){
-            if(getTeam(s) != null){
-                getTeam(s).addMatch(match);
-            }
-        }
     }
     
     public static void printTeamArray(ArrayList<RoboTeam> teams) {

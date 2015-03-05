@@ -12,7 +12,7 @@ public class TestTeamDataBase {
 		TeamDataBase database = new TeamDataBase();
 		
 		for(int count = 1; count <= 30; count++) {
-			database.add(new RoboTeam(count + ""));
+			database.addTeam(new RoboTeam(count + ""));
 		}
 	
 //		database.getTeam("25").addMatch(new TeleopMatch("1"));

@@ -1,43 +1,21 @@
 package database.match;
 
-import database.RoboTeam;
 import java.util.ArrayList;
+import java.util.Enumeration;
+import java.util.Hashtable;
+import java.util.List;
 
 public class Match {
-	private ArrayList<Action> autonomousActions;
-	private ArrayList<Action> teleopActions;
-        private ArrayList<String> teams;
+	private Hashtable<String,TeamActions> teamTable;
 	private String matchNumber;
 	
 	public Match(String matchNumber) {
-		this.autonomousActions = new ArrayList<Action>();
-		this.teleopActions = new ArrayList<Action>();
 		this.matchNumber = matchNumber;
-	}
-        
-        public Match(String matchNumber,String team1,String team2,String team3,String team4,String team5,String team6){
-            this(matchNumber);
-            teams.add(team1);
-            teams.add(team2);
-            teams.add(team3);
-            teams.add(team4);
-            teams.add(team5);
-            teams.add(team6);
-        }
-	
-	public int getTotalPoints() {
-		int points = 0;
-		points += getListPoints(autonomousActions);
-		points += getListPoints(teleopActions);
-		return points;
+		teamTable = new Hashtable<String,TeamActions>();
 	}
 	
-	private int getListPoints(ArrayList<Action> actions) {
-		int points = 0;
-		for(Action action: actions) {
-			points += action.getPoints();
-		}
-		return points;
+	public void addTeam(String teamNumber) {
+		teamTable.put(teamNumber, new TeamActions());
 	}
 	
 	public String getMatchNumber() {
@@ -50,130 +28,113 @@ public class Match {
 		return title;
 	}
 	
-	public ArrayList<Action> getAutonomousActions() {
-		return autonomousActions;
+	public TeamActions getTeamActions(String teamNumber) {
+		return teamTable.get(teamNumber);
 	}
 	
-	public ArrayList<Action> getTeleopActions() {
-		return teleopActions;
-	}
-        
-        public ArrayList<String> getTeams(){
-            return teams;
-        }
-	
-	public void printActions() {
-		System.out.println("AutonomousActions:");
-		for(Action action: autonomousActions) {
-			System.out.print(" -" + action.getData() + "\n");
-		}
-		System.out.println("TeleopActions:");
-		for(Action action: teleopActions) {
-			System.out.print(" -" + action.getData() + "\n");
-		}
-	}
-	
-	public void newRobotSet() {
-		autonomousActions.add(new RobotSet());
-	}
-	
-	public void newToteSet() {
-		autonomousActions.add(new ToteSet());
-	}
-	
-	public void newContainerSet() {
-		autonomousActions.add(new ContainerSet());
-	}
-	
-	public void newStackedToteSet() {
-		autonomousActions.add(new StackedToteSet());
-	}
-	
-	private class RobotSet extends Action {
-		public RobotSet() {
-			super(4,ActionType.AUTONOMOUS);
-			super.setDescription("All robots on the team drive into the autozone.");//get in the zone, autozone
-		}
-	}
-	
-	private class ToteSet extends Action {
-		public ToteSet() {
-			super(6,ActionType.AUTONOMOUS);
-			super.setDescription("All of the Totes are in the autozone");
-		}
-	}
-	
-	private class ContainerSet extends Action {
-		public ContainerSet() {
-			super(8,ActionType.AUTONOMOUS);
-			super.setDescription("All of the Bins are in the autozone");
-		}
-	}
-	
-	private class StackedToteSet extends Action {
-		public StackedToteSet() {
-			super(20,ActionType.AUTONOMOUS);
-			super.setDescription("All of the Totes are stacked in the autozone");
-		}
-	}
-	
-	public void newStackTote() {
-		teleopActions.add(new StackTote());
-	}
-	
-	public void newStackBin(int totes) {
-		teleopActions.add(new StackBin(totes));
-	}
-	
-	public void newNoodleInBin() {
-		teleopActions.add(new NoodleInBin());
-	}
-	
-	public void newPushNoodle() {
-		teleopActions.add(new PushNoodle());
-	}
-	
-	public void newCooperationSet() {
-		teleopActions.add(new CooperationSet());
+	public Enumeration<String> getTeams() {
+		return teamTable.keys();
 	}
 
-	private class StackTote extends Action {
-		public StackTote() {
-			super(2,ActionType.TELEOP);
-			super.setDescription("Put a tote on top of another tote or the ground");
+	public void addRobotSet(String teamNumber) {
+		teamTable.get(teamNumber).addAutonomousAction(Action.ROBOT_SET);
+	}
+	
+	public void addToteSet(String teamNumber) {
+		teamTable.get(teamNumber).addAutonomousAction(Action.TOTE_SET);
+	}
+	
+	public void addContainerSet(String teamNumber) {
+		teamTable.get(teamNumber).addAutonomousAction(Action.CONTAINER_SET);
+	}
+	
+	public void addCooperationSet(String teamNumber) {
+		teamTable.get(teamNumber).addAutonomousAction(Action.COOPERATION_SET);
+	}
+	
+	public void addStackedToteSet(String teamNumber) {
+		teamTable.get(teamNumber).addAutonomousAction(Action.STACKED_TOTE_SET);
+	}
+	
+	public void addStackTote(String teamNumber) {
+		teamTable.get(teamNumber).addTeleopAction(Action.STACK_TOTE);
+	}
+	
+	public void addStackBin(String teamNumber, int totes) {
+		teamTable.get(teamNumber).addTeleopAction(Action.STACK_BIN);
+		if(totes <= 6) {
+			Action.STACK_BIN.addRewardedPoints(totes*4);
+		} else {
+			Action.STACK_BIN.addRewardedPoints(24);
 		}
 	}
 	
-	private class StackBin extends Action {
-		public StackBin(int totes) {
-			super(totes * 4,ActionType.TELEOP);
-			if(totes > 6) {
-				super.rewardedPoints = 24;
+	public void addNoodleInBin(String teamNumber) {
+		teamTable.get(teamNumber).addTeleopAction(Action.NOODLE_IN_BIN);
+	}
+	
+	public void addPushNoodle(String teamNumber) {
+		teamTable.get(teamNumber).addTeleopAction(Action.PUSH_NOODLE);
+	}
+
+
+	public class TeamActions {
+		private List<Action> autonomousActions;
+		private List<Action> teleopActions;
+		
+		public TeamActions() {
+			this.autonomousActions = new ArrayList<Action>();
+			this.teleopActions = new ArrayList<Action>();
+		}
+		
+		public List<Action> getAutonomousActions() {
+			return autonomousActions;
+		}
+		
+		public List<Action> getTeleopActions() {
+			return teleopActions;
+		}
+		
+		private void addAutonomousAction(Action action) {
+			autonomousActions.add(action);
+		}
+		
+		private void addTeleopAction(Action action) {
+			teleopActions.add(action);
+		}
+		
+		public int getTotalPoints() {
+			int points = 0;
+			points += getListPoints(autonomousActions);
+			points += getListPoints(teleopActions);
+			return points;
+		}
+		
+		private int getListPoints(List<Action> actions) {
+			int points = 0;
+			boolean firstBin = true;
+			for(Action action: actions) {
+				if(action == Action.STACK_BIN) {
+					if(firstBin) {
+						points += action.getRewardedPoints();
+					}
+					firstBin = false;
+				} else {
+					points += action.getRewardedPoints();
+				}
 			}
-			super.setDescription("Put a bin on top of a stack of totes");
+			return points;
+		}
+		
+		public void printActions() {
+			System.out.println("AutonomousActions:");
+			for(Action action: autonomousActions) {
+				System.out.print(" -" + action.getData() + "\n");
+			}
+			System.out.println("TeleopActions:");
+			for(Action action: teleopActions) {
+				System.out.print(" -" + action.getData() + "\n");
+			}
 		}
 	}
-	
-	private class NoodleInBin extends Action {
-		public NoodleInBin() {
-			super(6,ActionType.TELEOP);
-			super.setDescription("Put a noodle in a bin");
-		}
-	}
-	
-	private class PushNoodle extends Action {
-		public PushNoodle() {
-			super(1,ActionType.TELEOP);
-			super.setDescription("Push a noodle into the landfill zone");
-		}
-	}
-	
-	private class CooperationSet extends Action {
-		public CooperationSet() {
-			super(20,ActionType.TELEOP);
-			super.setDescription("Both teams cooperate to stack 4 yellow bins on the step");
-		}
-	}
-	
-
 }
