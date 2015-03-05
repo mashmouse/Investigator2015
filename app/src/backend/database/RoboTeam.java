@@ -1,54 +1,51 @@
 package database;
-import java.io.File;
-import java.io.FileNotFoundException;
 import java.util.ArrayList;
-import java.util.Scanner;
 
 import match.Match;
 
 public class RoboTeam {
-	private ArrayList<Match> MATCHES;
-	private String TEAM_NUMBER;
-	private PitNotes PIT_NOTES;
+	private ArrayList<Match> matches;
+	private String teamNumber;
+	private PitNotes pitNotes;
 //	private Photo ROBOT_PICTURE;
 	
 	public RoboTeam(String teamNumber) {
-		MATCHES = new ArrayList<Match>();
-		TEAM_NUMBER = teamNumber;
-		PIT_NOTES = new PitNotes();
+		matches = new ArrayList<Match>();
+		this.teamNumber = teamNumber;
+		pitNotes = new PitNotes();
 	}
 	
 	public String getTeamNumber() {
-		return TEAM_NUMBER;
+		return teamNumber;
 	}
 	
 	public void addMatch(Match match) {
-		MATCHES.add(match);
+		matches.add(match);
 	}
 	
 	public ArrayList<Match> getMatches() {
-		return MATCHES;
+		return matches;
 	}
 	
 	public void printMatches() {
-		for(Match currentMatch: MATCHES) {
+		for(Match currentMatch: matches) {
 			System.out.println(currentMatch.getMatchNumber() + ":");
-			currentMatch.printActions();
+			currentMatch.getTeamActions(teamNumber).printActions();
 		}
 	}
 	
 	public PitNotes getPitNotes() {
-		return PIT_NOTES;
+		return pitNotes;
 	}
 	
 	public String toString() {
 		String output = "";
-		output += TEAM_NUMBER + ":\n";
+		output += teamNumber + ":\n";
 		output += "  Matches: \n";
-		for(Match match: MATCHES) {
+		for(Match match: matches) {
 			output += "    -" + match.getTitle() + " "+ match.getMatchNumber() + "\n";
 		} 
-		output += "  " + PIT_NOTES; 
+		output += "  " + pitNotes; 
 		return output;
 	}
 	

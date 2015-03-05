@@ -26,7 +26,24 @@ public class FolderTest {
 //		RoboTeam team = SaveTools.loadRoboTeam("4180");
 //		System.out.println(team + "\n");
 //		team.printMatches();
-		Match match = SaveTools.loadMatch("1", "4180");
-		match.printActions();
+		Match match = new Match("1");
+		match.addTeam("4180");
+		match.addContainerSet("4180");
+		match.addCooperationSet("4180");
+		match.addNoodleInBin("4180");
+		match.addPushNoodle("4180");
+		match.addRobotSet("4180");
+		match.addStackBin("4180", 5);
+		match.addStackTote("4180");
+		match.addToteSet("4180");
+		match.addContainerSet("4180");
+		match.addCooperationSet("4180");
+		match.addNoodleInBin("4180");
+		match.addPushNoodle("4180");
+		match.addRobotSet("4180");
+		match.addStackBin("4180", 5);
+		match.addStackTote("4180");
+		match.addToteSet("4180");
+		match.getTeamActions("4180").printActions();
 	}
 }
