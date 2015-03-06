@@ -65,10 +65,10 @@ public class ServerToClientConnection implements Runnable {
 
     public void interpretMessage(Scanner messageScanner) {
         String command = messageScanner.next();
+        System.out.println(command);
         if (command.equals(Server.COM_MAKE_TEAM)) {
             String teamNumber = messageScanner.next();
             ServerRunner.THE_DATABASE.addTeam(new RoboTeam(teamNumber));
-            System.out.println("Made a team");
         } else if (command.equals(Server.COM_MAKE_MATCH)) {
             Match m = new Match(messageScanner.next());
             m.addTeam(messageScanner.next());
@@ -121,6 +121,7 @@ public class ServerToClientConnection implements Runnable {
             ServerRunner.THE_DATABASE.getTeam(messageScanner.next()).addTeleAction(messageScanner.next(), Action.STACK_BIN);
         } else if (command.equals(Server.TELE_S_TOTE)) {
             ServerRunner.THE_DATABASE.getTeam(messageScanner.next()).addTeleAction(messageScanner.next(), Action.STACK_TOTE);
+        }else{
         }
         if (messageScanner.hasNext()) {
             interpretMessage(messageScanner);

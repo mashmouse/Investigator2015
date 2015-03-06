@@ -34,21 +34,21 @@ public class Server {
      * FORMAT: COM_MAKE_TEAM 4180 
      * the command followed by the team number
      */
-    public static final String COM_MAKE_TEAM = "COM_MAKE_TEAM ";
+    public static final String COM_MAKE_TEAM = "COM_MAKE_TEAM";
 
     /**
      * The command for adding a match to a team 
      * FORMAT: COM_ADD_MATCH 4180 GLA_23 
      * the command followed by the team number of the team and the match number
      */
-    public static final String COM_ADD_MATCH = "COM_ADD_MATCH ";
+    public static final String COM_ADD_MATCH = "COM_ADD_MATCH";
 
     /**
      * The command for creating a match, with the teams that were in it 
      * FORMAT: COM_MAKE_MATCH GLA_23 4180 948 4911 1318 4030 27 
      * the command followed by the match number followed by the six teams which were in it
      */
-    public static final String COM_MAKE_MATCH = "COM_MAKE_MATCH ";
+    public static final String COM_MAKE_MATCH = "COM_MAKE_MATCH";
 
     /**
      * The command for adding an action to a robot when you have the team and
@@ -56,7 +56,7 @@ public class Server {
      * command followed by the action command, the team number, and the match
      * number
      */
-    public static final String COM_ADD_ACTION = "COM_ADD_ACTION ";
+    public static final String COM_ADD_ACTION = "COM_ADD_ACTION";
 
     /**
      * The start of the pit commands.
@@ -68,7 +68,7 @@ public class Server {
      * PIT_NOODLE 4180 false the command followed by the team number and then a
      * boolean
      */
-    public static final String PIT_NOODLE = PIT + "NOODLE ";
+    public static final String PIT_NOODLE = PIT + "NOODLE";
 
     /**
      * The command for a team's ability to manipulate a bin FORMAT: PIT_BIN 4180
@@ -80,48 +80,48 @@ public class Server {
      * The command for a team's ability to manipulate a tote FORMAT: PIT_TOTE
      * 4180 true the command followed by the team number and then a boolean
      */
-    public static final String PIT_TOTE = PIT + "TOTE ";
+    public static final String PIT_TOTE = PIT + "TOTE";
 
     /**
      * The command for a team's ability to go over the slope FORMAT: PIT_SLOPE
      * 4180 true the command followed by the team number and then a boolean
      */
-    public static final String PIT_SLOPE = PIT + "SLOPE ";
+    public static final String PIT_SLOPE = PIT + "SLOPE";
 
     /**
      * The command for a team's ability to manipulate flipped totes FORMAT:
      * PIT_FLIP 4180 false the command followed by the team number and then a
      * boolean
      */
-    public static final String PIT_FLIP = PIT + "FLIP ";
+    public static final String PIT_FLIP = PIT + "FLIP";
 
     /**
      * The command for a team with omni-wheels or some equivalent FORMAT:
      * PUIT_OMNI 4180 false the command followed by the team number and then a
      * boolean
      */
-    public static final String PIT_OMNI = PIT + "OMNI ";
+    public static final String PIT_OMNI = PIT + "OMNI";
 
     /**
      * The command for a team's ability to keep their robot balanced FORMAT:
      * PIT_BALANCE 4180 true the command followed by the team number and then a
      * boolean
      */
-    public static final String PIT_ROBOT_BALANCE = PIT + "BALANCE ";
+    public static final String PIT_ROBOT_BALANCE = PIT + "BALANCE";
 
     /**
      * The command for a team's ability to keep the stack of totes balanced
      * FORMAT: PIT_STACK_BALANCE 4180 true the command followed by the team
      * number and then a boolean
      */
-    public static final String PIT_STACK_BALANCE = PIT + "STACK_BALANCE ";
+    public static final String PIT_STACK_BALANCE = PIT + "STACK_BALANCE";
 
     /**
      * The command for any misc notes that are being sent to the server FORMAT:
      * PIT_MISC 4180 4 the robot has leds! the command followed by the number of
      * tokens in the message and then the message
      */
-    public static final String PIT_MISC = PIT + "MISC ";
+    public static final String PIT_MISC = PIT + "MISC";
 
     /**
      * The start of auto commands
@@ -131,27 +131,27 @@ public class Server {
      * The command for a team participating in a robot set FORMAT: TELE_COOP_SET
      * 4180 GLA_3 the command followed by the team number and the match number
      */
-    public static final String AUTO_ROBOT_SET = AUTO + "ROBOT_SET ";
+    public static final String AUTO_ROBOT_SET = AUTO + "ROBOT_SET";
 
     /**
      * The command for a team participating in a tote set FORMAT: TELE_COOP_SET
      * 4180 GLA_3 the command followed by the team number and the match number
      */
-    public static final String AUTO_TOTE_SET = AUTO + "TOTE_SET ";
+    public static final String AUTO_TOTE_SET = AUTO + "TOTE_SET";
 
     /**
      * The command for a team participating in a container set FORMAT:
      * TELE_COOP_SET 4180 GLA_3 the command followed by the team number and the
      * match number
      */
-    public static final String AUTO_CONT_SET = AUTO + "CONT_SET ";
+    public static final String AUTO_CONT_SET = AUTO + "CONT_SET";
 
     /**
      * The command for a team facilitating a stacked tote set FORMAT:
      * TELE_COOP_SET 4180 GLA_3 the command followed by the team number and the
      * match number
      */
-    public static final String AUTO_S_TOTE_SET = AUTO + "S_TOTE_SET ";
+    public static final String AUTO_S_TOTE_SET = AUTO + "S_TOTE_SET";
 
     /**
      * The start of all tele-operated commands
@@ -162,34 +162,34 @@ public class Server {
      * The command for a team stacking totes FORMAT: TELE_COOP_SET 4180 GLA_3
      * the command followed by the team number and the match number
      */
-    public static final String TELE_S_TOTE = TELE + "STACKED_TOTE ";
+    public static final String TELE_S_TOTE = TELE + "STACKED_TOTE";
 
     /**
      * The command for a team adding a container to a tote stack FORMAT:
      * TELE_COOP_SET 4180 GLA_3 the command followed by the team number and the
      * match number
      */
-    public static final String TELE_S_BIN = TELE + "STACKED_BIN ";
+    public static final String TELE_S_BIN = TELE + "STACKED_BIN";
 
     /**
      * The command for a team putting a noodle in a bin FORMAT: TELE_COOP_SET
      * 4180 GLA_3 the command followed by the team number and the match number
      */
-    public static final String TELE_NOODLE_BIN = TELE + "NOODLE_IN_BIN ";
+    public static final String TELE_NOODLE_BIN = TELE + "NOODLE_IN_BIN";
 
     /**
      * The command for a team pushing noodles and not damaging the robot or the
      * noodles FORMAT: TELE_COOP_SET 4180 GLA_3 the command followed by the team
      * number and the match number
      */
-    public static final String TELE_PUSH_NOODLE = TELE + "PUSHED_NOODLES ";
+    public static final String TELE_PUSH_NOODLE = TELE + "PUSHED_NOODLES";
 
     /**
      * The command for a team participating in a coopertition set FORMAT:
      * TELE_COOP_SET 4180 GLA_3 the command followed by the team number and the
      * match number
      */
-    public static final String TELE_COOP_SET = TELE + "COOP_SET ";
+    public static final String TELE_COOP_SET = TELE + "COOP_SET";
 
     private ServerSocket serverSocket;
     private Socket socket;

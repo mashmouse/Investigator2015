@@ -12,6 +12,7 @@ import java.net.Socket;
 import java.util.Scanner;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import server.Server;
 
 /**
  *
@@ -41,6 +42,7 @@ public class ClientToServerConnection implements Runnable{
     }
     @Override
     public void run() {
+        client.serverConnection.sendMessage(Server.COM_MAKE_TEAM + " 4180");
         shouldRun = true;
         while(shouldRun){
             try {
