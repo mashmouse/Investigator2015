@@ -1,16 +1,22 @@
 package database;
+import database.match.Action;
 import database.match.Match;
 import java.util.ArrayList;
+import java.util.Hashtable;
 
 
 public class RoboTeam {
 	private ArrayList<Match> matches;
+        private Hashtable<String,ArrayList<Action>> autoActions;
+        private Hashtable<String,ArrayList<Action>> teleActions;
 	private String teamNumber;
 	private PitNotes pitNotes;
 //	private Photo ROBOT_PICTURE;
 	
 	public RoboTeam(String teamNumber) {
 		matches = new ArrayList<Match>();
+                teleActions = new Hashtable<>();
+                autoActions = new Hashtable<>();
 		this.teamNumber = teamNumber;
 		pitNotes = new PitNotes();
 	}
@@ -21,7 +27,22 @@ public class RoboTeam {
 	
 	public void addMatch(Match match) {
 		matches.add(match);
+                for(int currentAuto = 0;currentAuto < match.getTeamActions(teamNumber).getAutonomousActions().size();currentAuto++){
+                    addAutoAction(match.getMatchNumber(),match.getTeamActions(teamNumber).getAutonomousActions().get(currentAuto));
+                }
+                for(int currentTele = 0;currentTele < match.getTeamActions(teamNumber).getAutonomousActions().size();currentTele++){
+                    addTeleAction(match.getMatchNumber(),match.getTeamActions(teamNumber).getTeleopActions().get(currentTele));
+                }
+                
 	}
+        
+        public void addAutoAction(String matchNumber,Action action){
+            autoActions.get(matchNumber).add(action);
+        }
+        
+        public void addTeleAction(String matchNumber,Action action){
+            teleActions.get(matchNumber).add(action);
+        }
 	
 	public ArrayList<Match> getMatches() {
 		return matches;
@@ -71,6 +92,10 @@ public class RoboTeam {
 		public void setMiscFunctions(String string) {
 			FUNCTION_MISCELLANEOUS = string;
 		}
+                
+                public void addMiscFuntion(String toAdd){
+                    FUNCTION_MISCELLANEOUS += toAdd;
+                }
 		
 		public String toString() {
 			String output = "PitNotes: \n";

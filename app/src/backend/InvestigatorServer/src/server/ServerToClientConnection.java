@@ -6,6 +6,7 @@
 package server;
 
 import database.RoboTeam;
+import database.match.Action;
 import database.match.Match;
 import java.io.DataInputStream;
 import java.io.DataOutputStream;
@@ -75,43 +76,51 @@ public class ServerToClientConnection implements Runnable{
             m.addTeam(messageScanner.next());
             ServerRunner.THE_DATABASE.addMatch(m);
         }else if(command.equals(Server.COM_ADD_ACTION)){
-//            ServerRunner.THE_DATABASE.
+            interpretMessage(messageScanner);
         }else if(command.equals(Server.COM_ADD_MATCH)){
-            
+            //Not doing this for now
         }else if(command.equals(Server.PIT_BIN)){
-            
+            ServerRunner.THE_DATABASE.getTeam(messageScanner.next()).getPitNotes().FUNCTION_BIN = messageScanner.nextBoolean();
         }else if(command.equals(Server.PIT_FLIP)){
-            
+            ServerRunner.THE_DATABASE.getTeam(messageScanner.next()).getPitNotes().FUNCTION_FLIP_TOTE = messageScanner.nextBoolean();
         }else if(command.equals(Server.PIT_MISC)){
-            
+            String teamNumber = messageScanner.next();
+            String misc = "";
+            for(int currentToken = messageScanner.nextInt();currentToken > 0;currentToken--){
+                misc+= messageScanner.next();
+            }
+            ServerRunner.THE_DATABASE.getTeam(teamNumber).getPitNotes().addMiscFuntion(misc);
         }else if(command.equals(Server.PIT_NOODLE)){
-            
+            ServerRunner.THE_DATABASE.getTeam(messageScanner.next()).getPitNotes().FUNCTION_NOODLE = messageScanner.nextBoolean();
         }else if(command.equals(Server.PIT_OMNI)){
-            
+            ServerRunner.THE_DATABASE.getTeam(messageScanner.next()).getPitNotes().FUNCTION_OMNIWEEL = messageScanner.nextBoolean();
         }else if(command.equals(Server.PIT_ROBOT_BALANCE)){
-            
+            ServerRunner.THE_DATABASE.getTeam(messageScanner.next()).getPitNotes().FUNCTION_BALANCE_ROBOT = messageScanner.nextBoolean();
         }else if(command.equals(Server.PIT_SLOPE)){
-            
+            ServerRunner.THE_DATABASE.getTeam(messageScanner.next()).getPitNotes().FUNCTION_SLOPE = messageScanner.nextBoolean();
         }else if(command.equals(Server.PIT_TOTE)){
-            
+            ServerRunner.THE_DATABASE.getTeam(messageScanner.next()).getPitNotes().FUNCTION_TOTE = messageScanner.nextBoolean();
         }else if(command.equals(Server.AUTO_CONT_SET)){
-            
+            ServerRunner.THE_DATABASE.getTeam(messageScanner.next()).addAutoAction(messageScanner.next(), Action.CONTAINER_SET);
         }else if(command.equals(Server.AUTO_ROBOT_SET)){
-            
+            ServerRunner.THE_DATABASE.getTeam(messageScanner.next()).addAutoAction(messageScanner.next(), Action.ROBOT_SET);
         }else if(command.equals(Server.AUTO_S_TOTE_SET)){
-            
+            ServerRunner.THE_DATABASE.getTeam(messageScanner.next()).addAutoAction(messageScanner.next(), Action.STACKED_TOTE_SET);
         }else if(command.equals(Server.AUTO_TOTE_SET)){
-            
+            ServerRunner.THE_DATABASE.getTeam(messageScanner.next()).addAutoAction(messageScanner.next(), Action.TOTE_SET);
         }else if(command.equals(Server.TELE_COOP_SET)){
-            
+            ServerRunner.THE_DATABASE.getTeam(messageScanner.next()).addTeleAction(messageScanner.next(), Action.COOPERATION_SET);
         }else if(command.equals(Server.TELE_NOODLE_BIN)){
-            
+            ServerRunner.THE_DATABASE.getTeam(messageScanner.next()).addTeleAction(messageScanner.next(), Action.NOODLE_IN_BIN);
         }else if(command.equals(Server.TELE_PUSH_NOODLE)){
-            
+            ServerRunner.THE_DATABASE.getTeam(messageScanner.next()).addTeleAction(messageScanner.next(), Action.PUSH_NOODLE);
         }else if(command.equals(Server.TELE_S_BIN)){
-            
+            ServerRunner.THE_DATABASE.getTeam(messageScanner.next()).addTeleAction(messageScanner.next(), Action.STACK_BIN);
         }else if(command.equals(Server.TELE_S_TOTE)){
-            
+            ServerRunner.THE_DATABASE.getTeam(messageScanner.next()).addTeleAction(messageScanner.next(), Action.STACK_TOTE);
+        }
+        if(messageScanner.hasNext()){
+            interpretMessage(messageScanner);
         }
     }
     

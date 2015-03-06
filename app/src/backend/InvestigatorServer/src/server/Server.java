@@ -49,8 +49,8 @@ public class Server {
 
     /**
      * The command for adding an action to a robot when you have the team and match numbers
-     * FORMAT: COM_ADD_ACTION 4180 GLA_23 ACTION_TYPE AWARDED_POINTS DESCRIPTION
-     * the command followed by the team and match numbers, then the type of action, the points which were awarded, then a description of the action
+     * FORMAT: COM_ADD_ACTION TELE_STACKED_TOTE 4180 GLA_3
+     * the command followed by the action command, the team number, and the match number
      */
     public static final String COM_ADD_ACTION = "COM_ADD_ACTION ";
     
@@ -128,29 +128,29 @@ public class Server {
     public static final String AUTO = "AUTO_";
     /**
      * The command for a team participating in a robot set
-     * FORMAT: AUTO_ROBOT_SET 4180 true
-     * the command followed by the team number and then a boolean
+     * FORMAT: TELE_COOP_SET 4180 GLA_3
+     * the command followed by the team number and the match number
      */
     public static final String AUTO_ROBOT_SET = AUTO + "ROBOT_SET ";
 
     /**
      * The command for a team participating in a tote set
-     * FORMAT: AUTO_TOTE_SET 4180 false
-     * the command followed by the team number and a boolean
+     * FORMAT: TELE_COOP_SET 4180 GLA_3
+     * the command followed by the team number and the match number
      */
     public static final String AUTO_TOTE_SET = AUTO + "TOTE_SET ";
 
     /**
      * The command for a team participating in a container set
-     * FORMAT: AUTO_CONT_SET 4180 true
-     * the command followed by the team number the a boolean
+     * FORMAT: TELE_COOP_SET 4180 GLA_3
+     * the command followed by the team number and the match number
      */
     public static final String AUTO_CONT_SET = AUTO + "CONT_SET ";
 
     /**
      * The command for a team facilitating a stacked tote set
-     * FORMAT: AUTO_S_TOTE_SET 4180 boolean
-     * the command followed by the team number and a boolean
+     * FORMAT: TELE_COOP_SET 4180 GLA_3
+     * the command followed by the team number and the match number
      */
     public static final String AUTO_S_TOTE_SET = AUTO + "S_TOTE_SET ";
     
@@ -161,36 +161,36 @@ public class Server {
     
     /**
      * The command for a team stacking totes
-     * FORMAT: TELE_STACK_TOTE 4180 5
-     * the command followed by the team number and the level the robot stacked their highest tote at
+     * FORMAT: TELE_COOP_SET 4180 GLA_3
+     * the command followed by the team number and the match number
      */
     public static final String TELE_S_TOTE = TELE + "STACKED_TOTE ";
 
     /**
      * The command for a team adding a container to a tote stack
-     * FORMAT: TELE_STACKED_BIN 4180 4
-     * the command followed by the team number and the level which the team added the bin at
+     * FORMAT: TELE_COOP_SET 4180 GLA_3
+     * the command followed by the team number and the match number
      */
     public static final String TELE_S_BIN = TELE + "STACKED_BIN ";
 
     /**
      * The command for a team putting a noodle in a bin
-     * FORMAT: TELE_NOODLE_IN_BIN 4180 true
-     * the command followed by the team number and a boolean
+     * FORMAT: TELE_COOP_SET 4180 GLA_3
+     * the command followed by the team number and the match number
      */
     public static final String TELE_NOODLE_BIN = TELE + "NOODLE_IN_BIN ";
 
     /**
      * The command for a team pushing noodles and not damaging the robot or the noodles
-     * FORMAT: TELE_PUSHED_NOODLES 4180 true
-     * the command followed by the team number and a boolean
+     * FORMAT: TELE_COOP_SET 4180 GLA_3
+     * the command followed by the team number and the match number
      */
     public static final String TELE_PUSH_NOODLE = TELE + "PUSHED_NOODLES ";
 
     /**
      * The command for a team participating in a coopertition set
-     * FORMAT: TELE_COOP_SET 4180 4
-     * the command followed by the team number and the highest level the robot added a tote at
+     * FORMAT: TELE_COOP_SET 4180 GLA_3
+     * the command followed by the team number and the match number
      */
     public static final String TELE_COOP_SET = TELE + "COOP_SET ";
     
