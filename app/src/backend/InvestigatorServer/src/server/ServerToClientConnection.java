@@ -70,18 +70,20 @@ public class ServerToClientConnection implements Runnable {
             String teamNumber = messageScanner.next();
             ServerRunner.THE_DATABASE.addTeam(new RoboTeam(teamNumber));
         } else if (command.equals(Server.COM_MAKE_MATCH)) {
-            Match m = new Match(messageScanner.next());
-            m.addTeam(messageScanner.next());
-            m.addTeam(messageScanner.next());
-            m.addTeam(messageScanner.next());
-            m.addTeam(messageScanner.next());
-            m.addTeam(messageScanner.next());
-            m.addTeam(messageScanner.next());
-            ServerRunner.THE_DATABASE.addMatch(m);
+            String matchNumber = messageScanner.next();
+            if (ServerRunner.THE_DATABASE.getMatch(matchNumber) == null) {
+                Match m = new Match(matchNumber);
+                m.addTeam(messageScanner.next());
+                m.addTeam(messageScanner.next());
+                m.addTeam(messageScanner.next());
+                m.addTeam(messageScanner.next());
+                m.addTeam(messageScanner.next());
+                m.addTeam(messageScanner.next());
+                ServerRunner.THE_DATABASE.addMatch(m);
+            }
         } else if (command.equals(Server.COM_ADD_ACTION)) {
             interpretMessage(messageScanner);
         } else if (command.equals(Server.COM_ADD_MATCH)) {
-            //TODO figure out what this is supposed to be for
         } else if (command.equals(Server.PIT_BIN)) {
             ServerRunner.THE_DATABASE.getTeam(messageScanner.next()).getPitNotes().FUNCTION_BIN = messageScanner.nextBoolean();
         } else if (command.equals(Server.PIT_FLIP)) {
