@@ -1,36 +1,36 @@
 package database.match;
 
-public abstract class Action {
-	protected int rewardedPoints = 0;
-        protected String team;
-	protected ActionType actionType;
-	String description = "";
-
-	public Action(int rewardedPoints, ActionType actionType) {
+public enum Action {
+	ROBOT_SET(4,"ROBOT_SET"),
+	TOTE_SET(6,"TOTE_SET"),
+	CONTAINER_SET(8,"CONTAINER_SET"),
+	STACKED_TOTE_SET(20,"STACKED_TOTE_SET"),
+	STACK_TOTE(2,"STACK_TOTE"),
+	STACK_BIN(0,"STACK_BIN"),
+	NOODLE_IN_BIN(6,"NOODLE_IN_BIN"),
+	PUSH_NOODLE(1,"PUSH_NOODLE"),
+	COOPERATION_SET(20,"COOPERATION_SET");
+	
+	private int rewardedPoints;
+	private String label;
+	Action(int rewardedPoints, String label){
 		this.rewardedPoints = rewardedPoints;
-		this.actionType = actionType;
-	}
-
-	public int getPoints() {
-		return rewardedPoints;
-	}
-
-	public String getDescription() {
-		return description;
-	}
-
-	protected void setDescription(String description) {
-		this.description = description;
-	}
-
-	public String getData() {
-		String title = this.getClass().toString();
-		title = title.substring(title.indexOf("$") + 1,title.length()).toUpperCase();
-		return title + " " + rewardedPoints;
+		this.label = label;
 	}
 	
-	protected enum ActionType {
-		TELEOP,
-		AUTONOMOUS
+	public String getLabel() {
+		return label;
+	}
+	
+	public int getRewardedPoints() {
+		return rewardedPoints;
+	}
+	
+	public void addRewardedPoints(int points) {
+		this.rewardedPoints += points;
+	}
+	
+	public String getData() {
+		return label + " " + rewardedPoints;
 	}
 }

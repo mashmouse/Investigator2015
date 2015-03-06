@@ -18,5 +18,7 @@ public class ServerRunner {
     public static void main(String[] args){
         THE_DATABASE = new TeamDataBase();
         THE_SERVER = new Server();
+        THE_SERVER.startServer();
+        THE_SERVER.waitForClientConnections();
     }
 }

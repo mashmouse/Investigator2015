@@ -5,10 +5,17 @@
  */
 package main;
 
+import client.Client;
+import server.Server;
+
 /**
  *
  * @author Aaron Jacobson
  */
 public class ClientRunner {
     
+    public static void main(String[] args){
+        Client client = new Client();
+        client.connectToServer(Server.IP, Server.PORT_NUMBER);
+    }
 }
