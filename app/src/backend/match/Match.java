@@ -32,7 +32,7 @@ public class Match {
 		return teamTable.get(teamNumber);
 	}
 	
-	public Enumeration getTeams() {
+	public Enumeration<String> getTeamNumbers() {
 		return teamTable.keys();
 	}
 

@@ -5,6 +5,7 @@ import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.io.PrintWriter;
 import java.util.ArrayList;
+import java.util.Enumeration;
 import java.util.Scanner;
 
 import match.Match;
@@ -71,8 +72,20 @@ public class SaveTools {
 		return null;
 	}
 	
-	public static void saveMatch(Match match, RoboTeam team) {
-		
+	public static void saveMatch(Match match) {
+		PrintWriter fileWriter = null;
+		try {
+			fileWriter = new PrintWriter(new File("database\\matches\\" + match.getMatchNumber() + ".log"));
+			Enumeration<String> teams = match.getTeamNumbers();
+			int count = 0;
+			while(teams.hasMoreElements()) {
+				fileWriter.println(teams.nextElement() + " " + count);
+				count++;
+			}
+			fileWriter.close();
+		} catch(IOException io) {
+			System.err.println("IOException bitch... sorry");
+		}
 	}
 
 	public static Match loadMatch(String matchNumber, String teamNumber) {
