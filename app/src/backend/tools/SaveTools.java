@@ -10,6 +10,7 @@ import java.util.Scanner;
 
 import match.Match;
 import match.Action;
+import match.Match.TeamActions;
 import database.RoboTeam;
 
 public class SaveTools {
@@ -21,7 +22,7 @@ public class SaveTools {
 			ArrayList<Match> matches = team.getMatches();
 			for(Match currentMatch : matches) {
 				fileWriter.print(currentMatch.getMatchNumber() + " ");
-				saveMatch(currentMatch, team);
+				saveMatch(currentMatch);
 			}
 			fileWriter.println();
 			fileWriter.println(team.getPitNotes().FUNCTION_NOODLE);
@@ -73,16 +74,30 @@ public class SaveTools {
 	}
 	
 	public static void saveMatch(Match match) {
-		PrintWriter fileWriter = null;
+		PrintWriter logFileWriter = null;
+		PrintWriter matchFileWriter = null;
 		try {
-			fileWriter = new PrintWriter(new File("database\\matches\\" + match.getMatchNumber() + ".log"));
+			logFileWriter = new PrintWriter(new File("database\\matches\\" + match.getMatchNumber() + ".log"));
+			matchFileWriter = new PrintWriter(new File("database\\matches\\" + match.getMatchNumber() + ".mch"));
 			Enumeration<String> teams = match.getTeamNumbers();
 			int count = 0;
 			while(teams.hasMoreElements()) {
-				fileWriter.println(teams.nextElement() + " " + count);
+				String currentTeamNumber = teams.nextElement();
+				logFileWriter.println(currentTeamNumber + " " + count);
+				TeamActions actions = match.getTeamActions(currentTeamNumber);
+				
+				ArrayList<Action> autonomousActions = actions.getAutonomousActions();
+				ArrayList<Action> teleopActions = actions.getTeleopActions();
+				for(Action currentAutonomous : autonomousActions) {
+					matchFileWriter.println(currentAutonomous.getData());
+				}
+				for(Action currentTeleop : teleopActions) {
+					matchFileWriter.println(currentTeleop.getData());
+				}
+				matchFileWriter.println();
 				count++;
 			}
-			fileWriter.close();
+			logFileWriter.close();
 		} catch(IOException io) {
 			System.err.println("IOException bitch... sorry");
 		}

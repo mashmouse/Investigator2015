@@ -77,21 +77,20 @@ public class Match {
 		teamTable.get(teamNumber).addTeleopAction(Action.PUSH_NOODLE);
 	}
 
-
 	public class TeamActions {
-		private List<Action> autonomousActions;
-		private List<Action> teleopActions;
+		private ArrayList<Action> autonomousActions;
+		private ArrayList<Action> teleopActions;
 		
 		public TeamActions() {
 			this.autonomousActions = new ArrayList<Action>();
 			this.teleopActions = new ArrayList<Action>();
 		}
 		
-		public List<Action> getAutonomousActions() {
+		public ArrayList<Action> getAutonomousActions() {
 			return autonomousActions;
 		}
 		
-		public List<Action> getTeleopActions() {
+		public ArrayList<Action> getTeleopActions() {
 			return teleopActions;
 		}
 		

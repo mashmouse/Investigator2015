@@ -13,10 +13,13 @@ public class CreateTeams {
 			System.out.println((new File("competitors.txt")).getAbsolutePath());
 			Scanner fileScanner = new Scanner(new File("competitors.txt"));
 			
+			int count = 0;
 			while(fileScanner.hasNextInt()) {
-				RoboTeam team = new RoboTeam(fileScanner.next());
-				SaveTools.saveRoboTeam(team);
+				count++;
+//				RoboTeam team = new RoboTeam(fileScanner.next());
+//				SaveTools.saveRoboTeam(team);
 			}
+			System.out.println(count);
 		} catch(FileNotFoundException ex) {
 			System.err.println("Hey bra, FileNotFoundException");
 		}

@@ -6,28 +6,28 @@ import match.Match;
 public class TestMatch {
 	public static void main(String[] args) {
 		Match match = new Match("1");
-		match.addTeam("4180");
-			match.addContainerSet("4180");
-			match.addCooperationSet("4180");
-			match.addRobotSet("4180");
-			match.addStackedToteSet("4180");
-			match.addToteSet("4180");
-		match.addTeam("7896");
-			match.addNoodleInBin("7896");
-			match.addPushNoodle("7896");
-			match.addStackBin("7896", 5);
-			match.addStackTote("7896");
-		match.addTeam("3333");
-			match.addContainerSet("3333");
-			match.addCooperationSet("3333");
-			match.addRobotSet("3333");
-			match.addStackedToteSet("3333");
-			match.addToteSet("3333");
-			match.addNoodleInBin("3333");
-			match.addPushNoodle("3333");
-			match.addStackBin("3333", 5);
-			match.addStackTote("3333");
-			
+		
+		match.addTeam("6666");
+			match.addContainerSet("6666");
+			match.addCooperationSet("6666");
+			match.addRobotSet("6666");
+			match.addStackedToteSet("6666");
+			match.addToteSet("6666");
+			match.addNoodleInBin("6666");
+			match.addPushNoodle("6666");
+			match.addStackBin("6666", 5);
+			match.addStackTote("6666");
+		match.addTeam("279");
+			match.addNoodleInBin("279");
+			match.addPushNoodle("279");
+			match.addStackBin("279", 5);
+			match.addStackTote("279");
+		match.addTeam("101");
+			match.addContainerSet("101");
+			match.addCooperationSet("101");
+			match.addRobotSet("101");
+			match.addStackedToteSet("101");
+			match.addToteSet("101");
 		SaveTools.saveMatch(match);
 	}
 }
